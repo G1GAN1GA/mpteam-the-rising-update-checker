@@ -4,7 +4,11 @@
   "versions": [ 
     {
  "id": 2.1,
-    "releasedAt": 1768700572000
+    "releasedAt": 1768700572000,
+      "promotions": {
+            "downloads": {
+            "generic": "https://t.me"
+            }       
     }
   ]
 }
