@@ -1,20 +1,6 @@
-root@muddy-harlequin:~/mpfood# docker compose logs mpfood-api
+root@muddy-harlequin:~/mpfood/backend# docker compose logs mpfood-api
 WARN[0000] /root/mpfood/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
 mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
-mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
 mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,9 +43,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -98,7 +102,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -159,24 +163,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -220,9 +228,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -261,7 +287,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -322,24 +348,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -383,9 +413,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -424,7 +472,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -485,24 +533,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -546,9 +598,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -587,7 +657,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -648,24 +718,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -709,9 +783,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -750,7 +842,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -811,24 +903,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -872,9 +968,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -913,7 +1027,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -974,24 +1088,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -1035,9 +1153,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -1076,7 +1212,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -1137,24 +1273,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -1198,9 +1338,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -1239,7 +1397,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -1300,24 +1458,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -1361,9 +1523,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -1402,7 +1582,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -1463,24 +1643,28 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-mpfood-api  | Traceback (most recent call last):
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
-mpfood-api  |     sock = socket.create_connection(
-mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
-mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
-mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
-mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
-mpfood-api  | 
-mpfood-api  | During handling of the above exception, another exception occurred:
-mpfood-api  | 
 mpfood-api  | Traceback (most recent call last):
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
 mpfood-api  |     self._dbapi_connection = engine.raw_connection()
@@ -1524,9 +1708,27 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | pymysql.err.OperationalError: (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | 
 mpfood-api  | The above exception was the direct cause of the following exception:
 mpfood-api  | 
@@ -1565,7 +1767,7 @@ mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_lo
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
 mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
 mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |   File "/app/app.py", line 30, in <module>
 mpfood-api  |     Base.metadata.create_all(bind=engine)
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
 mpfood-api  |     bind._run_ddl_visitor(
@@ -1626,8 +1828,26 @@ mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: i
 mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
 mpfood-api  |     self.connect()
-mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
-mpfood-api  |     raise exc
-mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 702, in connect
+mpfood-api  |     self._request_authentication()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1014, in _request_authentication
+mpfood-api  |     auth_packet = self._process_auth(plugin_name, auth_packet)
+mpfood-api  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 1048, in _process_auth
+mpfood-api  |     return _auth.sha256_password_auth(self, auth_packet)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 165, in sha256_password_auth
+mpfood-api  |     return _roundtrip(conn, data)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+mpfood-api  |     pkt = conn._read_packet()
+mpfood-api  |           ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 803, in _read_packet
+mpfood-api  |     packet.raise_for_error()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+mpfood-api  |     err.raise_mysql_exception(self._data)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+mpfood-api  |     raise errorclass(errno, errval, sqlstate=sqlstate)
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'mpfood_user'@'172.19.0.4' (using password: YES)")
 mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
-root@muddy-harlequin:~/mpfood# 
+root@muddy-harlequin:~/mpfood/backend# 
