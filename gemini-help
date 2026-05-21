@@ -1,0 +1,1633 @@
+root@muddy-harlequin:~/mpfood# docker compose logs mpfood-api
+WARN[0000] /root/mpfood/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 682, in connect
+mpfood-api  |     sock = socket.create_connection(
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 839, in create_connection
+mpfood-api  |     for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/socket.py", line 974, in getaddrinfo
+mpfood-api  |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+mpfood-api  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  | socket.gaierror: [Errno -2] Name or service not known
+mpfood-api  | 
+mpfood-api  | During handling of the above exception, another exception occurred:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | 
+mpfood-api  | The above exception was the direct cause of the following exception:
+mpfood-api  | 
+mpfood-api  | Traceback (most recent call last):
+mpfood-api  |   File "/usr/local/bin/uvicorn", line 8, in <module>
+mpfood-api  |     sys.exit(main())
+mpfood-api  |              ^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1524, in __call__
+mpfood-api  |     return self.main(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1445, in main
+mpfood-api  |     rv = self.invoke(ctx)
+mpfood-api  |          ^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1308, in invoke
+mpfood-api  |     return ctx.invoke(self.callback, **ctx.params)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/click/core.py", line 877, in invoke
+mpfood-api  |     return callback(*args, **kwargs)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 441, in main
+mpfood-api  |     run(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 609, in run
+mpfood-api  |     config.load_app()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 415, in load_app
+mpfood-api  |     return import_from_string(self.app)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 19, in import_from_string
+mpfood-api  |     module = importlib.import_module(module_str)
+mpfood-api  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+mpfood-api  |     return _bootstrap._gcd_import(name[level:], package, level)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+mpfood-api  |   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+mpfood-api  |   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+mpfood-api  |   File "/app/app.py", line 18, in <module>
+mpfood-api  |     Base.metadata.create_all(bind=engine)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/sql/schema.py", line 5931, in create_all
+mpfood-api  |     bind._run_ddl_visitor(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3267, in _run_ddl_visitor
+mpfood-api  |     with self.begin() as conn:
+mpfood-api  |   File "/usr/local/lib/python3.11/contextlib.py", line 137, in __enter__
+mpfood-api  |     return next(self.gen)
+mpfood-api  |            ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3257, in begin
+mpfood-api  |     with self.connect() as conn:
+mpfood-api  |          ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3293, in connect
+mpfood-api  |     return self._connection_cls(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+mpfood-api  |     Connection._handle_dbapi_exception_noconnection(
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2448, in _handle_dbapi_exception_noconnection
+mpfood-api  |     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+mpfood-api  |     self._dbapi_connection = engine.raw_connection()
+mpfood-api  |                              ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3317, in raw_connection
+mpfood-api  |     return self.pool.connect()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 448, in connect
+mpfood-api  |     return _ConnectionFairy._checkout(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1272, in _checkout
+mpfood-api  |     fairy = _ConnectionRecord.checkout(pool)
+mpfood-api  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+mpfood-api  |     rec = pool._do_get()
+mpfood-api  |           ^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+mpfood-api  |     return self._create_connection()
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 389, in _create_connection
+mpfood-api  |     return _ConnectionRecord(self)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+mpfood-api  |     self.__connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+mpfood-api  |     with util.safe_reraise():
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 121, in __exit__
+mpfood-api  |     raise exc_value.with_traceback(exc_tb)
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+mpfood-api  |     self.dbapi_connection = connection = pool._invoke_creator(self)
+mpfood-api  |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 667, in connect
+mpfood-api  |     return dialect.connect(*cargs_tup, **cparams)
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+mpfood-api  |     return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+mpfood-api  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 372, in __init__
+mpfood-api  |     self.connect()
+mpfood-api  |   File "/usr/local/lib/python3.11/site-packages/pymysql/connections.py", line 744, in connect
+mpfood-api  |     raise exc
+mpfood-api  | sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'xiMvMZsdaTnKQW@mpfood-db' ([Errno -2] Name or service not known)")
+mpfood-api  | (Background on this error at: https://sqlalche.me/e/20/e3q8)
+root@muddy-harlequin:~/mpfood# 
